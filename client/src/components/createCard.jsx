@@ -8,7 +8,7 @@ const CreateCard = (props) => {
   const [description, setDescription] = useState("");
 
   const createPost = (imageURL, username, description) => {
-    Axios.post("http://localhost:3001/api/createPost", {
+    Axios.post("http://192.168.0.123:3001/api/createPost", {
       user: username,
       imageURL: imageURL,
       description: description,

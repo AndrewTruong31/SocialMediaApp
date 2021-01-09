@@ -11,6 +11,7 @@ const CreatePost = (props) => {
           <NavBar
             username={props.profile.username}
             profileURL={props.profile.profileURL}
+            setCardList={props.setCardList}
           ></NavBar>
 
           <Row className="padding">

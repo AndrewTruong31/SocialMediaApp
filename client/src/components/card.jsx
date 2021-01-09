@@ -6,15 +6,17 @@ class customCard extends Component {
   state = {};
   render() {
     return (
-        <Card style={{ width: '35rem' }}>
-          <Card.Img variant="top" src={this.props.src} />
-          <Card.Body>
-          <Card.Title>{this.props.cardTitle}</Card.Title>
-            <Card.Text>
-            {this.props.cardDesc}
-            </Card.Text>
-          </Card.Body>
-        </Card>
+      <Card style={{ width: "35rem" }}>
+        <Card.Img variant="top" src={this.props.src} />
+        <Card.Body>
+          <Card.Title>
+            <label>{this.props.cardTitle}</label>
+            
+          </Card.Title>
+          
+          <Card.Text>{this.props.cardDesc}</Card.Text>
+        </Card.Body>
+      </Card>
     );
   }
 }

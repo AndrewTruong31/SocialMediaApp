@@ -25,22 +25,19 @@ function App() {
   };
 
   const getLogin = () => {
-    return loggedin
-  }
+    return loggedin;
+  };
 
   useEffect(() => {
     if (loggedin) {
-      Axios.get("http://localhost:3001/api/getCard").then((responseCards) => {
-        setCardList(responseCards.data);
-      });
+      Axios.get("http://192.168.0.123:3001/api/getCard").then(
+        (responseCards) => {
+          setCardList(responseCards.data);
+        }
+      );
     }
 
-    // Axios.post("http://localhost:3001/api/getProfile", {
-    //   username: "Andrew",
-    // }).then((responseProfile) => {
-    //   setProfile(responseProfile.data[0]);
-    // });
-  }, []);
+  }, [loggedin]);
 
   return (
     <Router>
@@ -70,6 +67,7 @@ function App() {
               setCardList={setCardList}
               loggedin={loggedin}
               getLogin={getLogin}
+              setCardList={setCardList}
             />
           )}
         />
@@ -84,6 +82,7 @@ function App() {
               cardList={cardList}
               setCardList={setCardList}
               loggedin={loggedin}
+              setCardList={setCardList}
             />
           )}
         />

@@ -14,8 +14,15 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/api/search", (req, res) => {
-  const search = req.body.value;
+  const search = req.body.search;
   console.log(search);
+
+  const sqlSearch = "SELECT * from card WHERE user = ?";
+
+  db.query(sqlSearch, [search], (err, result) => {
+    console.log(result);
+    res.send(result);
+  });
 });
 
 app.get("/api/getCard", (req, res) => {
@@ -27,8 +34,10 @@ app.get("/api/getCard", (req, res) => {
 });
 
 app.post("/api/getProfile", (req, res) => {
+  console.log("GETTING PROFILE")
   const sqlGetCard = "SELECT * FROM users WHERE username = ?";
   db.query(sqlGetCard, req.body.username, (err, result) => {
+    console.log(result)
     res.send(result);
   });
 });
@@ -63,25 +72,25 @@ app.post("/api/createUser", (req, res) => {
 
       bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(password, salt, function (err, hash) {
-          console.log(err, hash)
+          console.log(err, hash);
           db.query(
             sqlCreateUser,
             [username, profileURL, hash],
             (err, result) => {
               console.log(err);
-              console.log("Created User")
+              console.log("Created User");
               res.send({
-                value:1
-              })
+                value: 1,
+              });
             }
           );
         });
       });
-    }else{
-      console.log("Username is taken")
+    } else {
+      console.log("Username is taken");
       res.send({
-        value:-1
-      })
+        value: -1,
+      });
     }
   });
 });

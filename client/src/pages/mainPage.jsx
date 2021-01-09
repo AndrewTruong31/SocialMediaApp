@@ -8,7 +8,7 @@ import Axios from "axios";
 const MainPage = (props) => {
 
   const searchVal = (value) => {
-    Axios.post("http://localhost:3001/api/search", {
+    Axios.post("http://192.168.0.123:3001/api/search", {
       value: value,
     });
   };
@@ -20,6 +20,7 @@ const MainPage = (props) => {
           <NavBar
             username={props.profile.username}
             profileURL={props.profile.profileURL}
+            setCardList={props.setCardList}
           ></NavBar>
 
           <Body cardList={props.cardList}></Body>

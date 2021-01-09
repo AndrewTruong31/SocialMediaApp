@@ -18,7 +18,7 @@ const CreateUser = (props) => {
         if (URL.length === 0) {
           URL = "https://i.picsum.photos/id/407/200/200.jpg?hmac=PV4bwPN59Y3_R4kbqnn8kxRsVzwUMQZn3BMu85CUPlA"
         }
-        Axios.post("http://localhost:3001/api/createUser", {
+        Axios.post("http://192.168.0.123:3001/api/createUser", {
           username: user,
           password: pass,
           profileURL: URL,
