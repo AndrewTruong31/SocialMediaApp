@@ -6,6 +6,7 @@ import PageNotFound from "./pages/404";
 import CreatePost from "./pages/createPost";
 import Login from "./pages/login";
 import CreateUser from "./pages/createUser";
+import Profile from "./pages/profile"
 
 import Axios from "axios";
 import {
@@ -36,7 +37,6 @@ function App() {
         }
       );
     }
-
   }, [loggedin]);
 
   return (
@@ -82,10 +82,23 @@ function App() {
               cardList={cardList}
               setCardList={setCardList}
               loggedin={loggedin}
-              setCardList={setCardList}
             />
           )}
         />
+        <Route
+          exact
+          path="/Profile"
+          render={(props) => (
+            <Profile
+              {...props}
+              profile={profile}
+              setProfile={setProfile}
+              cardList={cardList}
+              setCardList={setCardList}
+              loggedin={loggedin}
+            />
+          )}
+        ></Route>
 
         <Route exact path="/404" component={PageNotFound} />
         <Redirect to="/404" />

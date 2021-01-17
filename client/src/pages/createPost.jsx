@@ -16,7 +16,10 @@ const CreatePost = (props) => {
 
           <Row className="padding">
             <Col>
-              <CreateCard profile={props.profile}></CreateCard>
+              <CreateCard
+                profile={props.profile}
+                setCardList={props.setCardList}
+              ></CreateCard>
             </Col>
           </Row>
         </Container>

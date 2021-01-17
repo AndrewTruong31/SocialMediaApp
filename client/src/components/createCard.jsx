@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import Axios from "axios";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const CreateCard = (props) => {
   const [imageURL, setImageURL] = useState("");
@@ -26,6 +26,7 @@ const CreateCard = (props) => {
               setImageURL(e.target.value);
             }}
           />
+          <Card.Img className="padding" variant="top" src={imageURL} />
         </Card.Header>
         <Card.Img variant="top" />
         <Card.Body>
@@ -41,13 +42,16 @@ const CreateCard = (props) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Link to="/Home"><Button
-        onClick={() => createPost(imageURL, props.profile.username, description)}
-        className=""
-      >
-        Submit
-      </Button></Link>
-      
+      <Link to="/Home">
+        <Button
+          onClick={() =>
+            createPost(imageURL, props.profile.username, description)
+          }
+          className=""
+        >
+          Submit
+        </Button>
+      </Link>
     </div>
   );
 };

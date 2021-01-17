@@ -17,9 +17,9 @@ app.post("/api/search", (req, res) => {
   const search = req.body.search;
   console.log(search);
 
-  const sqlSearch = "SELECT * from card WHERE user = ?";
+  const sqlSearch = "SELECT * from card WHERE user = ? OR description = ?";
 
-  db.query(sqlSearch, [search], (err, result) => {
+  db.query(sqlSearch, [search, search], (err, result) => {
     console.log(result);
     res.send(result);
   });

@@ -22,11 +22,20 @@ const CustomNavbar = (props) => {
     })
   }
 
+  const reset = () => {
+    Axios.get("http://192.168.0.123:3001/api/getCard").then(
+        (responseCards) => {
+          props.setCardList(responseCards.data);
+        }
+      );
+  }
+
   return (
     <Navbar className="bg-light justify-content-between">
       {redirect === 1 ? <Redirect to="/" /> : null}
+      {redirect === 2 ? <Redirect to="/Profile" /> : null}
       <Form inline>
-        <Link to="/Home"><img className="logo" src="../../logo.png"/></Link>
+        <Link to="/Home"><img className="logo" src="../../logo.png" onClick={reset}/></Link>
       </Form>
       <Form inline>
         <Link to="/CreatePost">
@@ -42,7 +51,7 @@ const CustomNavbar = (props) => {
         />
         <Button onClick={() => searchDB(searchVal)}>Search</Button>
         <NavDropdown title={props.username} id="collasible-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+          <NavDropdown.Item onClick={() => setRedirect(2)}>Profile</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">filler</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={() => setRedirect(1)}>
